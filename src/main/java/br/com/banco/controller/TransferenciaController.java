@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.List;
 
 @RestController
@@ -30,5 +32,13 @@ public class TransferenciaController {
     @ResponseStatus(HttpStatus.CREATED)
     public Transferencia novaTransferencia(@RequestBody @Validated Transferencia transferencia){
         return transferenciaService.novaTransferencia(transferencia);
+    }
+
+    @GetMapping("/resultados-busca-transferencias")
+    public List<Transferencia> getByNomeAndDate(
+            @RequestParam(value = "operador", defaultValue = "") String nomeOperador,
+            @RequestParam(value = "inicio", defaultValue = "") Timestamp inicio,
+            @RequestParam(value = "fim", defaultValue = "") Timestamp fim) {
+        return transferenciaService.filtrarTransferencia(nomeOperador, inicio, fim);
     }
 }

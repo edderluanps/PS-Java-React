@@ -30,4 +30,8 @@ public class TransferenciaService {
         return transferenciaRepository.save(transferencia);
     }
 
+    public List<Transferencia> filtrarTransferencia(String nomeOperador, Timestamp dataInicio, Timestamp dataFim){
+        return transferenciaRepository.filtrarTransferencias(nomeOperador, dataInicio, dataFim);
+    }
+
 }
