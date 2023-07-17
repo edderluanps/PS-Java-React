@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,7 +31,7 @@ public class TransferenciaService {
         return transferenciaRepository.save(transferencia);
     }
 
-    public List<Transferencia> filtrarTransferencia(String nomeOperador, Timestamp dataInicio, Timestamp dataFim){
+    public List<Transferencia> filtrarTransferencia(String nomeOperador, Date dataInicio, Date dataFim){
         return transferenciaRepository.filtrarTransferencias(nomeOperador, dataInicio, dataFim);
     }
 
